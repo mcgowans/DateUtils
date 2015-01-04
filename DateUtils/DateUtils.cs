@@ -32,6 +32,22 @@ namespace BlueArk
                 return LastDayOfMonth(DateTime.Today);
             }
         }
+
+        /// <summary>
+        /// Gets yesterday's date.
+        /// </summary>
+        public static DateTime Yesterday
+        {
+            get { return DateTime.Today.AddDays(-1); }
+        }
+
+        /// <summary>
+        /// Gets tomorrow's date.
+        /// </summary>
+        public static DateTime Tommorrow
+        {
+            get { return DateTime.Today.AddDays(1); }
+        }
         #endregion
 
         #region First/Last day of a month
@@ -183,7 +199,7 @@ namespace BlueArk
         #endregion
 
         #region
-        // TODO...
+        // TODO... Lists of dates, like 'Every second Friday for the next year'.
         #endregion
     }
 }
