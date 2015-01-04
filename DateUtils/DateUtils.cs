@@ -44,7 +44,7 @@ namespace BlueArk
         /// <summary>
         /// Gets tomorrow's date.
         /// </summary>
-        public static DateTime Tommorrow
+        public static DateTime Tomorrow
         {
             get { return DateTime.Today.AddDays(1); }
         }
