@@ -109,6 +109,41 @@ namespace DateUtilsTests
             }
         }
 
+        [TestMethod]
+        public void Get_DaysBetween()
+        {
+            DateTime source1 = new DateTime(2014, 12, 15, 9, 10, 11);
+            DateTime target1 = new DateTime(2014, 12, 16, 9, 10, 11);
 
+            DateTime source2 = new DateTime(2014, 12, 15, 9, 10, 11);
+            DateTime target2 = new DateTime(2014, 12, 15, 4, 10, 11);
+
+            DateTime source3 = new DateTime(2013, 12, 15, 9, 10, 11);
+            DateTime target3 = new DateTime(2014, 12, 15, 4, 10, 11);
+
+            Assert.AreEqual(1, DateUtils.DaysBetween(source1, target1));
+            Assert.AreEqual(0, DateUtils.DaysBetween(source2, target2));
+            Assert.AreEqual(365, DateUtils.DaysBetween(source3, target3));
+        }
+
+        [TestMethod]
+        public void Get_DaysTo()
+        {
+            DateTime target1 = DateTime.Now;
+
+            Assert.AreEqual(0, DateUtils.DaysTo(target1));
+        }
+
+        [TestMethod]
+        public void Get_DaysFrom()
+        {
+            DateTime source1 = DateUtils.Tomorrow;
+            DateTime source2 = DateUtils.Yesterday;
+            DateTime source3 = DateTime.Today;
+
+            Assert.AreEqual(-1, DateUtils.DaysFrom(source1));
+            Assert.AreEqual(1, DateUtils.DaysFrom(source2));
+            Assert.AreEqual(0, DateUtils.DaysFrom(source3));
+        }
     }
 }

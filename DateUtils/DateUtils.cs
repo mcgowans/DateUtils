@@ -198,6 +198,42 @@ namespace BlueArk
         }
         #endregion
 
+        #region Date Calculations
+        /// <summary>
+        /// Calculate the number of days between sourceDate and the targetDate
+        /// </summary>
+        /// <param name="sourceDate">The date to start from</param>
+        /// <param name="targetDate">The date to compare against the source</param>
+        /// <returns>The number of days (positive or negative) between the source date,
+        /// and the target date.</returns>
+        public static Int32 DaysBetween(DateTime sourceDate, DateTime targetDate)
+        {
+            return (targetDate.Date - sourceDate.Date).Days;
+        }
+
+        /// <summary>
+        /// Calculate the number of days between today and the targetDate
+        /// </summary>
+        /// <param name="targetDate">The date to compare against today</param>
+        /// <returns>The number of days (positive or negative) between today,
+        /// and the target date.</returns>
+        public static Int32 DaysTo(DateTime targetDate)
+        {
+            return DaysBetween(DateTime.Today, targetDate);
+        }
+
+        /// <summary>
+        /// Calculate the number of days from the source date to today
+        /// </summary>
+        /// <param name="sourceDate">The date to compare against today</param>
+        /// <returns>The number of days (positive or negative) between the source
+        /// date and today.</returns>
+        public static Int32 DaysFrom(DateTime sourceDate)
+        {
+            return DaysBetween(sourceDate, DateTime.Today);
+        }
+        #endregion
+
         #region
         // TODO... Lists of dates, like 'Every second Friday for the next year'.
         #endregion
