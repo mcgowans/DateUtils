@@ -232,6 +232,28 @@ namespace BlueArk
         {
             return DaysBetween(sourceDate, DateTime.Today);
         }
+
+        /// <summary>
+        /// Gets the number of days in a given year
+        /// </summary>
+        /// <param name="year">The year to use for calculating the number of days from.</param>
+        /// <returns>The number of days in the given year</returns>
+        public static Int32 DaysInYear(Int32 year)
+        {
+            DateTime thisYear = new DateTime(year, 1, 1);
+            DateTime nextYear = new DateTime(year+1, 1, 1);
+
+            return (nextYear - thisYear).Days;
+        }
+
+        /// <summary>
+        /// Gets the number of days in the current year
+        /// </summary>
+        /// <returns>The number of days in the current year</returns>
+        public static Int32 DaysInYear()
+        {
+            return DaysInYear(DateTime.Today.Year);
+        }
         #endregion
 
         #region

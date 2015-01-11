@@ -145,5 +145,23 @@ namespace DateUtilsTests
             Assert.AreEqual(1, DateUtils.DaysFrom(source2));
             Assert.AreEqual(0, DateUtils.DaysFrom(source3));
         }
+
+        [TestMethod]
+        public void Get_DaysInYear()
+        {
+            Int32 year1 = 2015; // Normal year
+            Int32 year2 = 1900; // Not a leap year, as it's a multiple of 100
+            Int32 year3 = 2000; // Leap year, as it's a multiple of 400
+            Int32 year4 = 1976; // Normal leap year
+
+            Assert.AreEqual(365, DateUtils.DaysInYear(year1));
+            Assert.AreEqual(365, DateUtils.DaysInYear(year2));
+            Assert.AreEqual(366, DateUtils.DaysInYear(year3));
+            Assert.AreEqual(366, DateUtils.DaysInYear(year4));
+
+            // Check default method is calling the current year;
+            Int32 currentYear = DateTime.Now.Year;
+            Assert.AreEqual(DateUtils.DaysInYear(currentYear), DateUtils.DaysInYear());
+        }
     }
 }
