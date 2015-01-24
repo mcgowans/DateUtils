@@ -53,6 +53,7 @@
     <Compile Include="CommonHoldayTests.cs" />
     <Compile Include="DateUtilsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DateListTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DateUtils\DateUtils.csproj">

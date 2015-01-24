@@ -332,8 +332,62 @@ namespace BlueArk
         #endregion
 
 
-        #region
-        // TODO... Lists of dates, like 'Every second Friday for the next year'.
+        #region Lists of Dates
+        /// <summary>
+        /// Returns a list of DateTime objects that match the supplied HashSet
+        /// of days of the week between given dates.
+        /// </summary>
+        /// <param name="start">The start date to begin checking from.</param>
+        /// <param name="end">The end date to check up to.</param>
+        /// <param name="days">A HashSet of DayOfWeek values.</param>
+        /// <returns>A List of DateTime values matching the input criteria.</returns>
+        public static List<DateTime> EveryDayName(DateTime start, DateTime end, HashSet<DayOfWeek> days)
+        {
+            List<DateTime> dateList = new List<DateTime>();
+
+            // Make sure start is before end
+            if (start > end)
+            {
+                DateTime tmp = end.Date;
+                end = start.Date;
+                start = tmp;
+            }
+
+            // Loop through all dates, and add any that match the criteria
+            for (DateTime date = start; date <= end; date = date.AddDays(1))
+            {
+                if (days.Contains(date.DayOfWeek))
+                    dateList.Add(date.Date);
+            }
+
+            return dateList;
+        }
+
+        /// <summary>
+        /// Returns a list of DateTime objects that match the supplied HashSet
+        /// of days of the week between now and a given end date.
+        /// </summary>
+        /// <param name="end">The end date to check up to.</param>
+        /// <param name="days">A HashSet of DayOfWeek values.</param>
+        /// <returns>A List of DateTime values matching the input criteria.</returns>
+        public static List<DateTime> EveryDayName(DateTime end, HashSet<DayOfWeek> days)
+        {
+            return EveryDayName(DateTime.Today, end, days);
+        }
+
+        /// <summary>
+        /// Returns a list of DateTime objects that match the supplied HashSet
+        /// of days of the week between now and a given number of days from now.
+        /// </summary>
+        /// <param name="dayCount">The number of days added to today. The resulting date represents
+        /// the upper bound of the search space.</param>
+        /// <param name="days">A HashSet of DayOfWeek values.</param>
+        /// <returns>A List of DateTime values matching the input criteria.</returns>
+        public static List<DateTime> EveryDayName(Int32 dayCount, HashSet<DayOfWeek> days)
+        {
+            return EveryDayName(DateTime.Today.AddDays(dayCount), days);
+        }
+
         #endregion
     }
 }
